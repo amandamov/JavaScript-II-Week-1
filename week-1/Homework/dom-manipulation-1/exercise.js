@@ -116,16 +116,19 @@ The next color when you are in the last color of the array will be the first col
 */
 
 const fiveColors = ["blue", "green", "red", "pink", "lightblue"];
+let color = "";
+let countColor = 0;
 
-const changeBackgroundColor = document.querySelector("#bgrChangeBtn");
-changeBackgroundColor.addEventListener('click', changeColor);
+function selectColor(fiveColors){
 
-function changeColor(fiveColors){
-    for (i = 0; i < fiveColors.length; i++) {
-        document.body.style.backgroundColor = fiveColors[i];
+    color = fiveColors[countColor]
+    countColor++;
+    if (countColor == fiveColors.length) {
+        countColor = 0;
     }
+
+    return color
 }
 
-
-
-// () => {document.body.style.backgroundColor = 'lightblue'}
+const changeBackgroundColor = document.querySelector("#bgrChangeBtn");
+changeBackgroundColor.addEventListener('click',() => {document.body.style.backgroundColor = selectColor(color)});
